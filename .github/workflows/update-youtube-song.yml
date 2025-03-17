@@ -24,6 +24,9 @@ jobs:
       - name: Instalar Dependências 2
         run: pip install google-auth google-auth-oauthlib google-auth-httplib2 requests flask
 
+      - name: Instalar Dependências 3
+        run: pip install flask selenium html2image
+
       - name: Gerar Imagem da Última Música
         run: python yt-music-on-git.py
         env:
