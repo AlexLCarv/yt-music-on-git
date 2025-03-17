@@ -1,0 +1,39 @@
+name: Atualizar Última Música do YouTube
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Roda a cada 10 minutos
+  workflow_dispatch:  # Permite rodar manualmente
+
+jobs:
+  update-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Instalar Dependências
+        run: pip install google-api-python-client
+
+      - name: Instalar Dependências 2
+        run: pip install google-auth google-auth-oauthlib google-auth-httplib2 requests flask
+
+      - name: Gerar Imagem da Última Música
+        run: python yt-music-on-git.py
+        env:
+          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
+          CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
+
+      - name: Commit e Push da Imagem
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add static/youtube_last_song.png
+          git commit -m "Atualizando imagem da última música curtida no YouTube" || exit 0
+          git push
