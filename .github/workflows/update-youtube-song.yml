@@ -19,7 +19,10 @@ jobs:
           python-version: '3.9'
 
       - name: Instalar Dependências
-        run: pip install google-auth google-auth-oauthlib google-auth-httplib2 googleapiclient flask html2image
+        run: pip install google-api-python-client
+
+      - name: Instalar Dependências 2
+        run: pip install google-auth google-auth-oauthlib google-auth-httplib2 requests flask
 
       - name: Gerar Imagem da Última Música
         run: python -c "import update_image; update_image.get_last_activity()"
