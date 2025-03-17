@@ -5,6 +5,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
+from html2image import Html2Image
 
 SCOPES = ["https://www.googleapis.com/auth/youtube.readonly"]
 
@@ -85,8 +86,9 @@ def get_last_activity():
             </div>
         </div>
         """
-
-        return html_content
+        hti = Html2Image(output_path="static")
+        
+        return hti.screenshot(html_str=html_content, save_as="youtube_last_song.png")
 
     return "Nenhuma atividade encontrada."
 
@@ -96,4 +98,8 @@ def show_activity():
     return get_last_activity()
 
 if __name__ == "__main__":
-    app.run(port=8080, debug=True)
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "run":
+        app.run(port=8080, debug=True)  # Só roda o Flask se passar "run" no argumento
+    else:
+        get_last_activity()  # Apenas executa o script normalmente
