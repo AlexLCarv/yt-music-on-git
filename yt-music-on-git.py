@@ -47,6 +47,7 @@ def authenticate():
 
 def get_last_activity():
     """Obtém o último vídeo curtido do usuário no YouTube e exibe com miniatura e título à direita."""
+    os.makedirs("static", exist_ok=True)
     creds = authenticate()
     youtube = build("youtube", "v3", credentials=creds)
 
