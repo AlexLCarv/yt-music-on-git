@@ -25,7 +25,7 @@ jobs:
         run: pip install google-auth google-auth-oauthlib google-auth-httplib2 requests flask
 
       - name: Gerar Imagem da Última Música
-        run: python -c "import yt-music-on-git; yt-music-on-git.get_last_activity()"
+        run: python yt-music-on-git.py
         env:
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
           CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
