@@ -49,7 +49,12 @@ jobs:
           options.headless = True  # Rodar o navegador em modo headless (sem interface gráfica)
           options.add_argument('--no-sandbox')  # Evitar o erro de sandbox
           options.add_argument('--disable-dev-shm-usage')  # Evitar problemas com o uso de memória compartilhada em containers
+          options.add_argument('--disable-gpu')  # Desabilitar a aceleração gráfica
           
+          # Iniciar o Chrome sem dados de usuário
+          options.add_argument('--incognito')  # Rodar no modo incógnito, sem histórico ou dados persistentes
+          
+          # Iniciar o WebDriver
           driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
           
           driver.get('https://alexlcarv.github.io/yt-music-on-git/')
@@ -61,6 +66,7 @@ jobs:
           driver.save_screenshot('static/output.png')
           driver.quit()
           "
+
 
 
       - name: Set up Git
