@@ -21,7 +21,8 @@ jobs:
       - name: Instalar Dependências
         run: |
           pip install google-api-python-client
-          pip install google-auth google-auth-oauthlib google-auth-httplib2 requests flask selenium
+          pip install google-auth google-auth-oauthlib google-auth-httplib2 requests flask selenium html2image
+          pip install webdriver_manager  # Instala o webdriver_manager
 
       - name: Rodar script Python para atualizar o index.html
         run: python yt-music-on-git.py
