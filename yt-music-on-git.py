@@ -87,14 +87,13 @@ def get_last_activity():
         # Layout semelhante ao Spotify (foto à esquerda, título à direita)
         html_content = f"""
         <a href="{video_url}" target="_blank" style="text-decoration: none; color: inherit;">
-            <div style="background-color: #fff; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 15px; margin: 20px 0; display: flex; align-items: center; max-width: 400px;">
-                <img src="{thumbnail_url}" alt="Thumbnail" style="width: 60px; height: 60px; margin-right: 15px; border-radius: 10px;">
-                <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; text-align: center;">
-                    <p style="margin: 0; font-size: 14px; color: #888;">{album}</p>
-                    <p style="margin: 5; font-size: 16px; font-weight: bold; color: #333;">
+            <div style="background-color: #fff; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 15px; margin: 20px 0; display: flex; align-items: center; max-width: 400px; height: 60px; background-image: url('{thumbnail_url}'); background-size: auto 100%; background-position: right center; background-repeat: no-repeat;">
+                <div style="display: flex; flex-direction: column; justify-content: left; flex-grow: 1; text-align: left; font-family: 'Roboto', sans-serif;">
+                    <p style="margin: 0; margin-left: 5px; font-size: 14px; color: #b4b4b4;">Youtube Music</p>
+                    <p style="margin: 5; margin-left: 5px; font-size: 16px; font-weight: bold; color: #333;">
                         {title}
                     </p>
-                    <p style="margin: 0; font-size: 14px; color: #888;">{channel_title}</p> 
+                    <p style="margin: 0; margin-left: 5px; font-size: 14px; color: #888;">{channel_title}</p> 
                 </div>
             </div>
         </a>
