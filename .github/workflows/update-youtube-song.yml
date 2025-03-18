@@ -39,6 +39,6 @@ jobs:
         run: |
           git add .
           git commit -m "Atualizando index.html com a última música do YouTube"
-          git push https://github.com/${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+          git push https://github.com/${{ secrets.GH_TOKEN }}@github.com/AlexLCarv/yt-music-on-git HEAD:refs/heads/main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
