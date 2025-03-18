@@ -30,10 +30,15 @@ jobs:
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
           CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
 
-      - name: Commit e Push das alterações no index.html
+      - name: Set up Git
         run: |
-          git config --global user.name 'AlexLCarvalho'
-          git config --global user.email 'alexgoiasgol10@hotmail.com'
-          git add index.html
-          git commit -m "Atualizando index.html com a última música do YouTube" || exit 0
-          git push
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Atualizando index.html com a última música do YouTube"
+          git push https://github.com/${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
