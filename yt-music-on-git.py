@@ -77,7 +77,8 @@ def get_last_activity():
         else:
             title = snippet.get("title", "Sem título")
             album = ''
-        channel_title = snippet.get("channelTitle", "Sem descrição")  # Nome do artista/banda
+        channel_title = snippet.get("channelTitle", "Nome do Canal")
+        channel_title = channel_title.replace(" - Topic", "")
         video_id = item["id"]  # Pegando o ID correto do vídeo
         thumbnail_url = snippet["thumbnails"]["default"]["url"]
 
