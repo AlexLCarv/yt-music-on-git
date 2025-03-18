@@ -44,16 +44,11 @@ jobs:
           from webdriver_manager.chrome import ChromeDriverManager
           from selenium.webdriver.chrome.service import Service
           from selenium.webdriver.chrome.options import Options
-          import tempfile
-          import os
-          
-          # Criar um diretório temporário para o usuário
-          temp_dir = tempfile.mkdtemp()
           
           options = Options()
           options.headless = True  # Rodar o navegador em modo headless (sem interface gráfica)
           options.add_argument('--no-sandbox')  # Evitar o erro de sandbox
-          options.add_argument(f'--user-data-dir={temp_dir}')  # Definir um diretório temporário para o usuário
+          options.add_argument('--disable-dev-shm-usage')  # Evitar problemas com o uso de memória compartilhada em containers
           
           driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
           
@@ -65,10 +60,8 @@ jobs:
           # Tirar o screenshot
           driver.save_screenshot('static/output.png')
           driver.quit()
-          
-          # Limpar o diretório temporário após o uso
-          os.rmdir(temp_dir)
           "
+
 
       - name: Set up Git
         run: |
