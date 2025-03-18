@@ -39,7 +39,6 @@ jobs:
         run: |
           git add .
           git commit -m "Atualizando index.html com a última música do YouTube"
-      - name: Push changes
-        run: git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/AlexLCarv/yt-music-on-git HEAD:refs/heads/main
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
