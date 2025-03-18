@@ -86,18 +86,18 @@ def get_last_activity():
         
         # Layout semelhante ao Spotify (foto à esquerda, título à direita)
         html_content = f"""
-        <div style="background-color: #fff; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 15px; margin: 20px 0; display: flex; align-items: center; max-width: 400px;">
-            <img src="{thumbnail_url}" alt="Thumbnail" style="width: 60px; height: 60px; margin-right: 15px; border-radius: 10px;">
-            <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; text-align: center;">
-                <p style="margin: 0; font-size: 14px; color: #888;">{album}</p>
-                <p style="margin: 5; font-size: 16px; font-weight: bold; color: #333;">
-                    <a href="{video_url}" target="_blank" style="text-decoration: none; color: #333;">
+        <a href="{video_url}" target="_blank" style="text-decoration: none; color: inherit;">
+            <div style="background-color: #fff; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 15px; margin: 20px 0; display: flex; align-items: center; max-width: 400px;">
+                <img src="{thumbnail_url}" alt="Thumbnail" style="width: 60px; height: 60px; margin-right: 15px; border-radius: 10px;">
+                <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; text-align: center;">
+                    <p style="margin: 0; font-size: 14px; color: #888;">{album}</p>
+                    <p style="margin: 5; font-size: 16px; font-weight: bold; color: #333;">
                         {title}
-                    </a>
-                </p>
-                <p style="margin: 0; font-size: 14px; color: #888;">{channel_title}</p> 
+                    </p>
+                    <p style="margin: 0; font-size: 14px; color: #888;">{channel_title}</p> 
+                </div>
             </div>
-        </div>
+        </a>
         """
         with open("index.html", "w", encoding="utf-8") as file:
             file.write(html_content)
