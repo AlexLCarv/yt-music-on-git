@@ -2,7 +2,7 @@ name: Atualizar Última Música do YouTube
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Roda a cada 10 minutos
+    - cron: '0 0 * * *'  # Roda todos os dias às 00:00
   workflow_dispatch:  # Permite rodar manualmente
 
 jobs:
