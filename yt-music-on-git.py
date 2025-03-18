@@ -1,11 +1,14 @@
 import os
-import json
 from flask import Flask
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
-from html2image import Html2Image
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 SCOPES = ["https://www.googleapis.com/auth/youtube.readonly"]
 TOKEN_FILE = "token.json"
@@ -99,9 +102,10 @@ def get_last_activity():
             </div>
         </div>
         """
-        hti = Html2Image(output_path="static")
-        
-        return hti.screenshot(html_str=html_content, save_as="youtube_last_song.png")
+        with open("index.html", "w", encoding="utf-8") as file:
+            file.write(html_content)
+        return "Criada"
+        # return hti.screenshot(html_str=html_content, save_as="youtube_last_song.png")
 
     return "Nenhuma atividade encontrada."
 
