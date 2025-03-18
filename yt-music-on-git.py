@@ -75,9 +75,9 @@ def get_last_activity():
             title = snippet.get("tags")[2]
             album = snippet.get("tags")[1]
         else:
-            title = snippet.get("tags")[1]
+            title = snippet.get("title", "Sem título")
             album = ''
-        channel_title = snippet.get("tags")[0]
+        channel_title = snippet.get("channelTitle", "Sem descrição")  # Nome do artista/banda
         video_id = item["id"]  # Pegando o ID correto do vídeo
         thumbnail_url = snippet["thumbnails"]["default"]["url"]
 
