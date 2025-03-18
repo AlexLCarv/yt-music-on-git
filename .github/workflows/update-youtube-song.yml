@@ -48,6 +48,7 @@ jobs:
           
           options = Options()
           options.headless = True  # Rodar o navegador em modo headless (sem interface gráfica)
+          options.add_argument('--no-sandbox')  # Evitar o erro de sandbox
           driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
           
           driver.get('https://alexlcarv.github.io/yt-music-on-git/')
